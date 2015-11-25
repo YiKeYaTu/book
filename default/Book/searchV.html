@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zn-ch" getinfo-url="{:addons_url('Book://Book/get_from_api')}">
+<head>
+	<meta charset="UTF-8">
+	<title>图书馆查询系统</title>
+	<!--<link rel="stylesheet" type="text/css" href="../Public/css/searchV.css">
+	<script src="../Public/js/flexible.js"></script>
+	<script src="../Public/js/zepto.min.js"></script>
+	<script src="../Public/js/iscroll.js"></script>-->
+	<link rel="stylesheet" type="text/css" href="{:ADDON_PUBLIC_PATH}/css/searchV.css">
+	<script src="{:ADDON_PUBLIC_PATH}/js/flexible.js"></script>
+	<script src="{:ADDON_PUBLIC_PATH}/js/zepto.min.js"></script>
+	<script src="{:ADDON_PUBLIC_PATH}/js/iscroll.js"></script>
+<body id="container">
+	<section>		
+		<section class="the-loading-wapper">	
+			<div class="loading-wapper">
+				<div class="loading-img"></div>
+				<p class="loading-page">
+					加载中哦~
+				</p>
+			</div>
+			<div class="fail-wapper">
+				<p class="fail-inf">
+					无结果
+				</p>
+				<p class="try-inf">
+					换些关键字试试吧
+				</p>
+				<div class="back-btn">
+					确
+				</div>
+			</div>
+		</section>
+		<header>
+			<section class="search-outer">
+				<input class="search-input" type="text" name="searchValue" placeholder="输入作者名或书名">
+				<div class="search-icon"></div>
+			</section>
+		</header>
+		<section class="user-select-outer">
+			<p class="user-select select-focus" id="reader-inf">
+				读者信息
+			</p>
+			<p class="user-select" id="rank-inf">
+				借书榜单
+			</p>
+		</section>
+		<section class="user-inf-outer">
+		<!-- 后台渲染 -->
+			<div class="user-inf">
+				<i class="user-icon user-name-icon"></i>
+				<p class="user-inf-key">
+					读者姓名
+				</p>
+				<p class="user-inf-value">
+					{$readerInfo.name}  <!--  这里渲染用户名 -->
+				</p>
+				<!-- 用户名 -->
+			</div>
+			<div class="user-inf">
+				<i class="user-icon borrow-number-icon"></i>
+				<p class="user-inf-key">
+					正在借阅量
+				</p>
+				<p class="user-inf-value">
+					{$readerInfo.borrow} <!--  这里渲染现在借了多少本 -->
+				</p>
+				<!-- 正在借阅 -->
+			</div>
+			<div class="user-inf">
+				<i class="user-icon history-icon"></i>
+				<p class="user-inf-key">
+					历史借阅量
+				</p>
+				<p class="user-inf-value">
+					{$readerInfo.history} <!--  这里渲染一共借了多少本 -->
+				</p>
+				<!-- 历史借阅 -->
+			</div>
+			<div class="user-inf" style="border:none">
+				<i class="user-icon money-icon"></i>
+				<p class="user-inf-key">
+					欠费金额
+				</p>
+				<p class="user-inf-value">
+					{$readerInfo.qianfei}<!--  这里渲染欠钱数量 -->
+				</p>
+				<!-- 欠费金额 -->
+			</div>
+			<div class="line"></div>
+			<div class="user-inf" id="reading">
+				<i class="user-icon now-borrow"></i>
+				<p class="user-inf-key">
+					正借阅书目
+				</p>
+				<i class="reading-icon"></i>
+				<!-- 欠费金额 -->
+			</div>
+			<div class="reading-box">
+
+
+				<!-- 这里用forEach渲染借的书 按照下面这个格式 -->
+				<!-- <div class="reading-list">
+					数据传输与计算机网络 
+				</div> -->
+				<foreach name="borrowInfo" item="data">
+					<div class="reading-list">
+						{$data.bookName} 
+					</div>
+				</foreach>
+				
+			</div>
+		</section>
+		<section class="rank-outer" id="rank-outer">
+			<ul class="wapper">
+				
+			</ul>
+		</section>
+		<section class="search-res">
+		</section>
+		<div class="line"></div>
+	</section>
+	<!-- <script src='../Public/js/search.js'></script>-->
+	<script src="{:ADDON_PUBLIC_PATH}/js/search.js"></script>
+</body>
+</html>
